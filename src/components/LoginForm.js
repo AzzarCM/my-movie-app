@@ -3,9 +3,17 @@ import { TextInput, TouchableOpacity, StyleSheet, Text} from 'react-native'
 import { Button } from 'react-native-paper'
 import {getToken} from '../api/apicalls'
 import { useFormik } from 'formik'
+import { useDispatch } from 'react-redux'
+import { setToken, startLogin } from '../actions/auth'
+import { useSelector } from 'react-redux'
+import { API_LOGIN_HOST } from '../utils/constants'
 
 const LoginForm = () => {
 
+    const [tokenAux, setTokenAux] = useState('');
+    const dispatch = useDispatch();
+    const state = useSelector(state => state)
+    
     const data = useFormik({
         initialValues:{
             "email": '',
@@ -19,9 +27,23 @@ const LoginForm = () => {
     })
 
     const login = () =>{
-        getToken(data.values);
+        console.log("pressed");
+        const url = `${API_LOGIN_HOST}`
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data.values),
+        })
+        .then((res)=>{
+            return res.json()
+        })
+        .then((result)=>{
+            dispatch(setToken(result))
+        })
     }
-
+    
     return (
         <>
             <TextInput

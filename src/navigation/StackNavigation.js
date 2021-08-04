@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack"
 import Home from "../Screens/Home"
 import Search from '../Screens/Search'
 import SignIn from '../Screens/SignIn'
+import {useSelector} from 'react-redux'
 
 const Stack = createStackNavigator();
 
@@ -13,11 +14,13 @@ export default function StackNavigation(props) {
     const { navigation } = props
     console.log(navigation);
     const [state, setState] = useState(false)
-   
+
+    const token = useSelector(state => state.auth.token)
+    console.log(token);
     return (
         <Stack.Navigator>
             {
-                state ? 
+                token !== '' ? 
                 <>
                 <Stack.Screen
                     name="home" 
