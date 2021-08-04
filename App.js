@@ -2,17 +2,17 @@ import React from 'react'
 import { View, Text } from 'react-native'
 import { Provider as PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native'
+//import Navigation from './src/navigation/Navigation';
+import StackNavigation from './src/navigation/StackNavigation';
+
 const App = () => {
   
   return (
-    <NavigationContainer>
-      <PaperProvider>
-        <View>
-          <Text>Hola Mundo</Text>
-        </View>
-      </PaperProvider>
-    </NavigationContainer>
-   
+    <PaperProvider>
+      <NavigationContainer> 
+        <StackNavigation/>
+      </NavigationContainer>
+    </PaperProvider>
   )
 }
 
