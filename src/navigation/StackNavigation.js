@@ -15,12 +15,12 @@ export default function StackNavigation(props) {
     console.log(navigation);
     const [state, setState] = useState(false)
 
-    const token = useSelector(state => state.auth.token)
+    const token = useSelector(state => state.auth.token.token)
     console.log(token);
     return (
         <Stack.Navigator>
             {
-                token !== '' ? 
+                token !== undefined ? 
                 <>
                 <Stack.Screen
                     name="home" 
