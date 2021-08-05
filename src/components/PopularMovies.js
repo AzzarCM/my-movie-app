@@ -41,10 +41,10 @@ const PopularMovies = () => {
                     mode="contained"
                     contentStyle={styles.loadMoreContainer}
                     style={styles.loadMore}
-                    labelStyle={{ color: "#000" }}
+                    labelStyle={{ color: "#fff" }}
                     onPress={() => setPage(page + 1)}
                 >
-                    Cargar Mas...
+                    Load more ...
                 </Button>
             )} 
         </ScrollView>
@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
         paddingBottom: 20,
     },
     loadMore: {
-        backgroundColor: "transparent",
-        marginBottom: 30,
+        backgroundColor: "#1e3040",
+        marginBottom: 140,
     }
 })
 

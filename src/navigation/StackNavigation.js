@@ -9,20 +9,9 @@ import {useSelector} from 'react-redux'
 
 const Stack = createStackNavigator();
 
-export default function StackNavigation(props) {
-
-    const { navigation } = props
-    console.log(navigation);
-    const buttonRight = () =>{
-        return (
-            <IconButton
-                icon="magnify"
-                onPress={() => navigation.navigate('search')}
-            />
-        )
-    }
+export default function StackNavigation() {
     const token = useSelector(state => state.auth.token.token)
-
+    const {searchText} = useSelector(state => state.ui)
     return (
         <Stack.Navigator>
             {
@@ -36,14 +25,14 @@ export default function StackNavigation(props) {
                 <Stack.Screen
                     name="search" 
                     component={Search} 
-                    options={{ title: 'Search' }} 
+                    options={{ title: `Search: ${searchText}` }} 
                 />
                 </>
                 :
                 <Stack.Screen
                 name="signin" 
                 component={SignIn} 
-                options={{ title: '', headerTransparent:true }} 
+                options={{ title:'', headerTransparent:true }} 
                 />
             }  
         </Stack.Navigator>

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import { searchMovieApi } from '../api/movies'
 import SearchTopBar from '../components/SearchTopBar';
 import { useSelector } from 'react-redux';
@@ -22,12 +22,18 @@ const Search = ({ navigation }) => {
     return (
         <ScrollView>
             <SearchTopBar navigation={navigation}/>
-            <Text>{searchText}</Text>
             {searchText.length >= 1 ? map(movies, (movie, index)=>(
                 <Movie key={index} movie={movie}/>
-            )): <Text>No</Text>}
+            )): <Text style={styles.textContainer}>No movies to show</Text>}
         </ScrollView>
     )
 }
+
+const styles = StyleSheet.create({
+    textContainer: {
+        fontSize: 30,
+        textAlign: 'center',
+    },
+})
 
 export default Search

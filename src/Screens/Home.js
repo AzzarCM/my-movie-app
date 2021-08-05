@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native'
-import {Button} from 'react-native-paper'
+import {Button, Title} from 'react-native-paper'
 import { useDispatch } from 'react-redux'
 import {logout} from '../actions/auth'
 import PopularMovies from '../components/PopularMovies'
@@ -26,6 +26,7 @@ const Home = (props) => {
                 >Log Out</Button>
                 
             </View>
+            <Title style={styles.title}>Popular Movies</Title>
             <PopularMovies/>
         </View>
     )
@@ -38,7 +39,13 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         marginTop: 25,
         marginBottom: 25,
-    }
+    },
+    title:{
+        marginBottom: 15,
+        marginHorizontal: 20,
+        fontWeight: "bold",
+        fontSize: 24,
+    },
 })
 
 export default Home
