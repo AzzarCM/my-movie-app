@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { View, Text } from 'react-native'
 import { createStackNavigator } from "@react-navigation/stack"
-
+import { IconButton } from 'react-native-paper'
 import Home from "../Screens/Home"
 import Search from '../Screens/Search'
 import SignIn from '../Screens/SignIn'
@@ -10,13 +10,19 @@ import {useSelector} from 'react-redux'
 const Stack = createStackNavigator();
 
 export default function StackNavigation(props) {
-    //console.log(props);
+
     const { navigation } = props
     console.log(navigation);
-    const [state, setState] = useState(false)
-
+    const buttonRight = () =>{
+        return (
+            <IconButton
+                icon="magnify"
+                onPress={() => navigation.navigate('search')}
+            />
+        )
+    }
     const token = useSelector(state => state.auth.token.token)
-    console.log(token);
+
     return (
         <Stack.Navigator>
             {
@@ -25,7 +31,7 @@ export default function StackNavigation(props) {
                 <Stack.Screen
                     name="home" 
                     component={Home} 
-                    options={{ title: 'Home' }} 
+                    options={{ title: 'Home'}} 
                 />
                 <Stack.Screen
                     name="search" 
@@ -37,11 +43,9 @@ export default function StackNavigation(props) {
                 <Stack.Screen
                 name="signin" 
                 component={SignIn} 
-                options={{ title: 'Sign In' }} 
-            />
-            }
-           
-            
+                options={{ title: '', headerTransparent:true }} 
+                />
+            }  
         </Stack.Navigator>
     )
 }

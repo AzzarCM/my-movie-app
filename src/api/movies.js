@@ -15,3 +15,14 @@ export function getPopularMoviesApi(page = 1) {
         return result;
     })
 }
+
+export function searchMovieApi(search) {
+    const url = `${API_MOVIE_HOST}/search/movie?api_key=${API_KEY}&language=${LANG}&query=${search}`
+    return fetch(url)
+    .then((res)=>{
+        return res.json();
+    })
+    .then((result)=>{
+        return result;
+    })
+}

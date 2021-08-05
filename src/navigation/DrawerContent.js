@@ -7,7 +7,12 @@ export default function DrawerContent(props) {
 
     return(
         <DrawerContentScrollView>
-            
+            <Drawer.Section title="Action">
+                <Drawer.Item
+                    label="Log Out"
+                    onPress={()=> console.log("logued out")}
+                />
+            </Drawer.Section>
         </DrawerContentScrollView>
     )
 }
