@@ -17,8 +17,6 @@ const Search = ({ navigation }) => {
        })
     }, [searchText])
 
-    console.log(movies);
-    
     return (
         <ScrollView>
             <SearchTopBar navigation={navigation}/>
